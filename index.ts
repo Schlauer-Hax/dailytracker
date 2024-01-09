@@ -13,4 +13,4 @@ const today = {
     spotistats: await fetchSpotistats(Deno.env.get("SPOTISTATS_USER_ID")!),
 }
 
-console.log(today);
+Deno.writeTextFileSync("./output.json", JSON.stringify(today, null, 2));
