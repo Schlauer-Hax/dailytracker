@@ -7,9 +7,17 @@ export async function fetchWordle(token: string) {
         }
     });
     const json = await req.json();
-    return {
-        win: json.game_data.game.status,
-        tries: json.game_data.game.boardState.length,
-        lastPlayed: json.game_data.game.timestamps.lastPlayed
+    if (json.game_data.game.timestamps.lastPlayed > new Date().getTime() - 1000 * 60 * 60 * 24) {
+        return {
+            win: json.game_data.game.status === "WIN",
+            tries: json.game_data.game.currentRowIndex,
+            lastPlayed: json.game_data.game.timestamps.lastPlayed
+        }
+    } else {
+        return {
+            win: false,
+            tries: 0,
+            lastPlayed: json.game_data.game.timestamps.lastPlayed
+        }
     }
 }
