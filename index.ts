@@ -9,7 +9,7 @@ import { fetchSteam } from "./receivers/steam.ts";
 // This is supposed to run on update, so once a day but at the end of the day that should be logged.
 const today = {
     goodreads: await fetchGoodreads(Deno.env.get("GOODREADS_USER_ID")!),
-    wordle: await fetchWordle(Deno.env.get("WORDLE_TOKEN")!),
+    //wordle: await fetchWordle(Deno.env.get("WORDLE_TOKEN")!),
     duolingo: await fetchDuolingo(Deno.env.get("DUOLINGO_USERNAME")!),
     spotistats: await fetchSpotistats(Deno.env.get("SPOTISTATS_USER_ID")!),
     steam: await fetchSteam(Deno.env.get("STEAM_KEY")!, Deno.env.get("STEAM_ID")!),
